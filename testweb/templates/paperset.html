@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="{% static 'home.css'%}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    :root {
+        --form-content-width: 300px;
+        --input-width: 200px;
+        --input-height: 40px;
+        --input-border-radius: 30px;
+        --input-font-szie: 16px;
+        --margin-medium: 20px; 
+        --input-color: #cccec1;
+        --theme-color: #143a64;
+        --bubble-size: 10px;
+    }
+    span {
+        font-size: var(--input-font-szie);
+    }
+    .content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(rgb(14, 44, 78),rgb(26, 136, 99));
+    }
+    .form-content {
+        width: 70vw;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 0 30px rgb(6, 49, 49);
+    }
+
+
+    .form-item .move {
+        padding: 0 5px;
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        color: var(--input-color);
+        pointer-events: none;
+        background-color: #fff;
+        transform: translateY(-55%);
+        transition: 0.3s ease;
+    }
+    .form-content .form-item {
+        position: relative;
+        margin-bottom: var(--margin-medium);
+    }
+
+    .form-item .text {
+        outline: none;
+        width: 60vw;
+        height: var(--input-height);
+        border-radius: var(--input-border-radius);
+        padding: 5px 15px ;
+        border: 1px solid var(--input-color);
+        transition: 0.3s ease;
+    }
+    .form-item .text:focus {
+        border: 1px solid var(--theme-color); 
+    }
+
+
+    .form-item .text:focus +.move,
+    .form-item .text:focus:valid +.move {
+        top: 0px;
+        left: 20px;
+        font-size: 14px;
+        color: var(--theme-color);
+        background-color: #fff;
+    }
+    .form-item .text:valid +.move {
+        top: 0px;
+        left: 20px;
+        font-size: 14px;
+        background-color: #fff;
+    }
+    
+    .form-content .button {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: var(--input-width);
+        height: var(--input-height);
+        border-radius: var(--input-border-radius);
+        margin-top: var(--margin-medium);
+        color: #f8faec;
+        font-size: var(--input-font-szie);
+        background: linear-gradient(rgb(28, 122, 116),rgb(26, 136, 99));
+        box-shadow: 0px 3px 20px rgba(26, 136, 99,0.5),
+                    0px 2px 3px rgba(170, 245, 199, 0.76) inset;
+        cursor: pointer;
+        overflow: hidden;
+        transition: .3s;
+    }
+    .button-ball {
+        z-index: 3;
+        position: absolute;
+        top:40px;
+        left:50%;
+        transform: translateX(-50%);
+        width: 300px;
+        height: 300px;
+        background-color: rgb(59, 189, 145);
+        border-radius: 50%;
+        transition: 1s ease;
+    }
+    .button:hover .button-ball {
+        left:50%;
+        transform: translate(-50%,-50%);
+    }
+    .button:active {
+        transform: translate(2px,2px);
+    }
+    .bubble {
+        z-index: 999;
+        position: absolute;
+        width: var(--bubble-size);
+        height: var(--bubble-size);
+        border-radius: 50%;
+        border: none;
+        box-shadow: 0 0 10px rgba(255,255,255,0.5); 
+        transition: 1s ease-in-out;
+    }
+
+  </style>
+
+
+
+  <title>Paper Set</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="hometeacher">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  About You
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">{{empno}}</a></li>
+                  
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              
+              <a href="{% url 'testweb:logoutteacher'%}" class="dropdown-item mx-2" >LogOut</a>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <div class="content">
+        <br>
+        <h1 style="color:white">Enter question in {{subject}} section.</h1>
+        <br><br>
+        <form action = "{% url "testweb:paperset"%}" class="form-content" method="post">
+            {% csrf_token %}
+            <h3>Total Number of Question:{{size}}</h3><br>
+            <div class="form-item">
+                <input type="number" class="text" name="Questionno" required value={{size}}>
+                <label class="move" for="text">QuestionNo</label>
+            </div>
+            <div class="form-item">
+                <input type="text" class="text" name="Question" required>
+                <label class="move" for="username">Question</label>
+            </div>
+            <div class="form-item">
+                <input type="text" class="text" name="Ans" required maxlength='1'>
+                <label class="move" for="text">Ans Option</label>
+            </div>
+            <div class="form-item">
+                <input type="text" class="text" name="A" required>
+                <label class="move" for="text">A</label>
+            </div>
+            <div class="form-item">
+                <input type="text" class="text" name="B" required>
+                <label class="move" for="text">B</label>
+            </div>
+            <div class="form-item">
+                <input type="text" class="text" name="C" required>
+                <label class="move" for="text">C</label>
+            </div>
+            <div class="form-item">
+                <input type="text" class="text" name="D" required>
+                <label class="move" for="text">D</label>
+            </div>
+            <div class="button">
+                <button style="z-index: 99; background:none; border:none;cursor:pointer; font-size:20px; font-weight:bold; color:yellow;"> Add Problem
+                </button>
+                <div class="button-ball"></div>
+            </div>
+        </form>
+        <br><br><br>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    </div>
+</body>

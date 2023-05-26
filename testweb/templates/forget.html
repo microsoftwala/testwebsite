@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="{% static 'login.css'%}">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="content">
+    <div class="text">Forget Password</div>
+    <form action="{% url 'testweb:Forget' %}" method='post'>
+        {% csrf_token %}
+        {% if count %}
+          <p style="background-color:rgb(249, 85, 85); height:22px;
+          border-radius: 5px;">{{message}}</p>
+        {% endif %}
+      <div class="field">
+        <span class="bx bxs-envelope"></span>
+        <input type="email" placeholder="Email" required id='Email' name='Email'>
+      </div>
+
+      <button>Reset</button>
+    </form>
+
+    <div class="dark-light" onclick="myFunction()">
+      <i class="bx bx-moon moon"></i>
+      <i class="bx bx-sun sun"></i>
+    </div>
+  </div>
+  <script>
+    const body = document.querySelector("body"),
+      modeToggle = document.querySelector(".dark-light");
+    modeToggle.addEventListener("click", () => {
+      modeToggle.classList.toggle("active");
+      body.classList.toggle("dark");
+      if (!body.classList.contains("dark")) {
+        localStorage.setItem("mode", "light-mode");
+      } else {
+        localStorage.setItem("mode", "dark-mode");
+      }
+    })
+  </script>
+</body>
+
+</html>

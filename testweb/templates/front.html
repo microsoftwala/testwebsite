@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css?family=Sunflower:300" rel="stylesheet"> 
+  <title>DashBoard</title>
+  <style>
+    body{
+        background-color:rgb(34,145,147);
+    }
+    .full-wrapper {
+        width:100%;
+      }
+      
+      .article-header-h1{
+        padding-top:50px;
+        margin:0;
+        font-size:40px;
+        font-weight:bold;
+        text-align:center;
+        font-family: 'Sunflower', sans-serif;
+      }
+      
+      .article-h1 a {
+        color:black;
+        text-align:left !important;
+      }
+      
+      .article-h1 a:hover {
+        color:black;
+      }
+      
+      .article-h1 a:visited {
+        color:black;
+      }
+      
+      .inner-wrapper {
+        padding:50px;
+        margin-bottom: -60px;
+      }
+      
+      .article-preview{
+        background-color:white;
+        margin-left:auto;
+        margin-right:auto;
+        box-shadow: 0.5px 0.10px 10px -1px #ccc;
+        border-left:4px solid #B71A8B;
+        cursor:pointer;
+      }
+      
+      @media (min-width: 1024px){
+        .article-preview{
+        background-color:white;
+        min-width:902px;
+        max-width:50%;
+        margin-left:auto;
+        margin-right:auto;
+      }
+      }
+      
+      @media (min-width: 1280px){
+        .article-preview{
+        background-color:white;
+        min-width:902px;
+        max-width:50%;
+        margin-left:auto;
+        margin-right:auto;
+          transition:.2s;
+      }
+        
+        .article-preview:hover{
+        transform:scale(1.02);
+      }
+      }
+      
+      @media (max-width: 768px){
+        .article-preview{
+        background-color:white;
+        width:100%;
+        margin-left:auto;
+        margin-right:auto;
+      }
+        .inner-wrapper {
+          padding:50px 10px;
+          margin-bottom: -60px;
+      }
+      }
+      
+      .article-h1,
+      .article-p,
+      .article-link,
+      .article-date{
+        text-align: left !important;
+        margin-left:30px !important;
+        margin-right:30px !important;
+        font-family: 'Sunflower', sans-serif;
+      }
+      
+      .full-wrapper a {
+        text-decoration: none;
+      }
+      
+      .article-date {
+        margin-bottom: -20px;
+        padding-top: 25px;
+        font-weight:normal;
+        color:#767676;
+        font-size:15px;
+      }
+      
+      .article-h1{
+        font-size:20px !important;
+        padding-top:25px;
+      }
+      
+      .article-p {
+        color:#767676;
+        font-weight:normal;
+        max-width:90%;
+      }
+      
+      .article-link a {
+        margin-top:10px;
+        color:#212529 !important;
+        font-weight:bold;
+      }
+      
+      .article-link:hover a {
+        color:#212529 ;
+      }
+      
+      .article-breaker{
+        border-bottom:1px solid #E8E8E8;
+        padding-top:20px;
+      }
+      
+      .article-breaker-last {
+        padding-top:20px;
+      }
+  </style>
+</head>
+
+<body>
+<div class="full-wrapper">
+
+  <h1 class="article-header-h1">Welcome to Online Testing Website</h1>
+   
+  <div class="inner-wrapper">
+       <div class="article-preview">
+         <h6 class="article-date">Teacher</h6>
+         <h3 class="article-h1"><a href="{% url 'testweb:Signupteacher' %}">SignUp or SignIn</a></h3> 
+         <br>
+       </div>
+    
+    		<div class="article-preview">
+         <h6 class="article-date">Student</h6>
+         <h3 class="article-h1"><a href="{% url 'testweb:Signup' %}">SignUp or SignIn</a></h3>
+         <br>
+       </div>
+   </div>
+   
+  </div>
+</body>
+</html>
